@@ -1,0 +1,78 @@
+@font-face 
+{
+    font-family: 'gugi';
+    src: url('font/gugi.otf') format('truetype');
+    font-family: 'DuskDemon';
+    src: url('font/DuskDemon.ttf') format('truetype');
+    font-family: 'Yanone';
+    src: url('font/Yanone.ttf') format('truetype');
+}
+
+body {
+    background-color: #2b2b2b;
+    margin:0;
+    padding:0;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    margin: auto;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+}
+
+
+
+
+.effects 
+{
+    animation: hue-rotate 10s linear infinite;
+}
+
+
+@keyframes hue-rotate {
+    from {
+        -webkit-filter: hue-rotate(0);
+        -moz-filter: hue-rotate(0);
+        -ms-filter: hue-rotate(0);
+        filter: hue-rotate(0);
+    }
+
+    to {
+        -webkit-filter: hue-rotate(360deg);
+        -moz-filter: hue-rotate(360deg);
+        -ms-filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg);
+    }
+}
+
+#container3D canvas 
+{
+  width: 1000vw;
+  height: 1000vw;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+@media screen and (max-width: 450px) {
+    .circle {
+        width: 10vw;
+        height: 10vw;
+    }
+}
+

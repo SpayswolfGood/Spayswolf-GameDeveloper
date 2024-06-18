@@ -1,0 +1,199 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Spayswolf - game developer</title>
+    <link rel="stylesheet" type="text/css" href="css/PlayGame.css">
+    <style>
+        .game {
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 300px;
+            margin: 20px auto;
+            color:white;
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+
+        .restart-button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="game">
+        <div class="mode-selection">
+            <button class="mode-button" id="player-vs-player">Игрок против игрока</button>
+            <button class="mode-button" id="player-vs-bot">Игрок против бота</button>
+        </div>
+        <div class="grid">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+        <button class="restart-button">Начать заново</button>
+    </div>
+
+
+    <script>
+        const cells = document.querySelectorAll('[data-cell]');
+        const restartButton = document.querySelector('.restart-button');
+        const modeButtons = document.querySelectorAll('.mode-button');
+
+        let currentPlayer = 'X';
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let gameEnded = false;
+        let playerVsPlayerMode = true;
+
+        const winningCombinations = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        function checkWinner() {
+            for (let combination of winningCombinations) {
+                const [a, b, c] = combination;
+                if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+                    return gameBoard[a];
+                }
+            }
+
+            if (gameBoard.every(cell => cell !== '')) {
+                return 'draw';
+            }
+
+            return null;
+        }
+
+        function handleCellClick(index) {
+
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            if (gameEnded || gameBoard[index] !== '') return;
+
+            gameBoard[index] = currentPlayer;
+            cells[index].innerText = currentPlayer;
+
+            const winner = checkWinner();
+
+            if (winner) {
+                if (winner === 'draw') {
+                    alert('Ничья!');
+                } else {
+                    alert('Игрок ' + currentPlayer + ' победил');
+                }
+                gameEnded = true;
+                return;
+            }
+
+            if (!playerVsPlayerMode) {
+
+                makeBotMove();
+            }
+
+            
+        }
+
+        modeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.id === 'player-vs-player') {
+                    playerVsPlayerMode = true;
+                } else if (button.id === 'player-vs-bot') {
+                    playerVsPlayerMode = false;
+                    // Добавим код для начала игры с ботом
+                    startGameWithBot();
+                }
+            });
+        });
+
+        function startGameWithBot() {
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            gameEnded = false;
+            currentPlayer = 'X';
+            cells.forEach(cell => cell.innerText = '');
+            makeBotMove();
+        }
+
+        function makeBotMove() {
+
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            const availableMoves = gameBoard.reduce((acc, cell, index) => {
+                if (cell === '') {
+                    acc.push(index);
+                }
+                return acc;
+            }, []);
+
+            const randomIndex = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+            gameBoard[randomIndex] = currentPlayer;
+            cells[randomIndex].innerText = currentPlayer;
+
+            const winner = checkWinner();
+
+            if (winner) {
+                if (winner === 'draw') {
+                    alert('Ничья!');
+                } else {
+                    alert('Бот победил');
+                }
+                gameEnded = true;
+                return;
+            }
+
+            
+        }
+
+        modeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.id === 'player-vs-player') {
+                    playerVsPlayerMode = true;
+                } else if (button.id === 'player-vs-bot') {
+                    playerVsPlayerMode = false;
+                    startGameWithBot(); // Начать игру с ботом при выборе этого режима
+                }
+            });
+        });
+
+        cells.forEach((cell, index) => {
+            cell.addEventListener('click', () => handleCellClick(index));
+        });
+
+        restartButton.addEventListener('click', () => {
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            currentPlayer = 'X';
+            gameEnded = false;
+
+            cells.forEach(cell => {
+                cell.innerText = '';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Spayswolf - game developer</title>
+
+  <style>
+
+      @font-face {
+          font-family: 'gugi';
+          src: url('font/gugi.otf') format('truetype');
+          font-family: 'DuskDemon';
+          src: url('font/DuskDemon.ttf') format('truetype');
+          font-family: 'Yanone';
+          src: url('font/Yanone.ttf') format('truetype');
+      }
+
+      body {
+          background-color: #2b2b2b;
+          margin: 0;
+          padding: 0;
+      }
+
+    .contenier
+    {
+        display:flex;
+        flex-direction:column;
+        gap:2vw;
+
+    }
+
+      .game-item {
+          display: flex;
+          flex-direction: row;
+          border-radius: 2vw;
+          background-color: #1d1d1e;
+          margin-left: 25vw;
+          margin-right: 25vw;
+          height: 7vw;
+          overflow: hidden;
+          
+      }
+
+      .con-text{
+          display:flex;
+          flex-direction:column;
+          margin-top:1vw;
+          
+      }
+
+      .con-img {
+
+          display: flex;
+          flex-direction: column;
+          margin-left:auto;
+      }
+
+    .text
+    {
+        color:white;
+        font-family:Yanone,sans-serif;
+        font-size:2vw;
+        margin-left:1vw;  
+        
+    }
+
+      img {
+          overflow: hidden;
+          height: 7vw;
+      }
+
+      .ico
+      {
+          width:1.3vw;
+          height:1.3vw;
+          padding:0.2vw;
+          padding-top:0.5vw;
+          
+      }
+
+          .ico:hover {
+              cursor: pointer;
+              filter: brightness(50%);
+          }
+
+
+
+      .btn-dowload {
+          display: inline-block;
+          padding: 0.5vw 1vw;
+          font-family:Yanone,sans-serif;
+          font-size: 1vw;
+          font-weight: bold;
+          text-align: center;
+          background-color: #4CAF50;
+          color: white;
+          border-radius: 5px;
+          cursor: pointer;
+
+
+          margin-left:1vw;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn-dowload:hover 
+      {
+          background-color: #45a049;
+      }
+
+      .btn-forewerd {
+          display: inline-block;
+          padding: 0.5vw 1vw;
+          font-family: Yanone,sans-serif;
+          font-size: 1vw;
+          font-weight: bold;
+          text-decoration:none;
+          text-align: center;
+          background-color: #3F92D2;
+          color: white;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-left: 1vw;
+          transition: background-color 0.3s ease;
+      }
+
+          .btn-forewerd:hover {
+              background-color: #0B61A4;
+          }
+
+
+      .btn-yt {
+          width: 3vw;
+          height: 3vw;
+          padding:0.5vw;
+      }
+
+      .btn-yt:hover {
+          filter: brightness(50%);
+          cursor:pointer;
+      }
+
+      .img-left{
+          width:7vw;
+          height:7vw;
+      }
+
+
+      @media screen and (max-width: 600px) {
+          .img-left {
+              width: 10vw;
+              height: 10vw;
+          }
+
+          .game-item {
+              height: 10vw;
+          }
+
+          .text {
+              font-size: 3vw;
+          }
+
+          .btn-dowload {
+              padding: 1vw 2vw;
+              font-size: 2vw;
+          }
+
+          .btn-forewerd {
+              padding: 1vw 2vw;
+              font-size: 2vw;
+             
+          }
+
+          .ico {
+              width: 2vw;
+              height: 2vw;
+          }
+
+          .btn-yt {
+              width: 4vw;
+              height: 4vw;
+              padding: 0.5vw;
+          }
+
+
+      }
+
+      @media screen and (max-width: 375px) {
+
+          .img-left {
+              width: 14vw;
+              height: 14vw;
+          }
+
+          .game-item {
+              height: 14vw;
+              margin-left: 15vw;
+              margin-right: 15vw;
+          }
+
+          .text {
+              font-size: 4vw;
+          }
+
+          .btn-dowload {
+              padding: 1.5vw 3vw;
+              font-size: 3vw;
+          }
+
+          .btn-forewerd {
+              padding: 1.5vw 3vw;
+              font-size: 3vw;
+          }
+
+          .ico {
+              width: 3.5vw;
+              height: 3.5vw;
+          }
+
+          .btn-yt {
+              width: 6vw;
+              height: 6vw;
+              padding: 0.5vw;
+          }
+      }
+
+
+  </style>
+</head>
+
+<body>
+    <div class="contenier">
+
+        <div class="game-item" style="margin-top:10vh;">
+            <img src="img/GravityPuzzle.jpg" alt="Image" class="img-left" />
+            <div class="con-text">
+
+
+                <a class="text">GRAVITY_PUZZLE </a>
+
+                <div style="margin-top:auto;margin-bottom:1vw;">
+                    <div onclick="downloadFile('DownloadFile/GravityPuzzle.exe')" class="btn-dowload">Download</div>
+                    <div class="btn-forewerd">follow</div>
+                </div>
+
+            </div>
+            <div class="con-img">
+                <div>
+                    <img onclick="target('DownloadFile/GravityPuzzle.apk'); change(this)" src="img/android.svg" alt="Image" class="ico" />
+                    <img onclick="target('DownloadFile/GravityPuzzle.exe');change(this)" src="img/tux.svg" alt="Image" class="ico" />
+                    <img onclick="target('DownloadFile/GravityPuzzle.exe');change(this)" src="img/windows.svg" alt="Image" class="ico" style="margin-right:1vw;" />
+                </div>
+                <a href="https://www.youtube.com/watch?v=AuEBFmlhI7E" target="_parent" style=" margin-top: auto;margin-left:auto;">
+                    <img src="img/youtube.svg" alt="Image" class="btn-yt" />
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="game-item">
+            <img src="img/MemGame.png" alt="Image" class="img-left" />
+            <div class="con-text">
+
+
+                <a class="text">MemGame </a>
+
+                <div style="margin-top:auto;margin-bottom:1vw;">
+                    <div onclick="downloadFile('DownloadFile/MemsGameSetup.exe')" class="btn-dowload">Download</div>
+                    <a href="https://spayswolf.itch.io/mem" target="_parent" class="btn-forewerd">follow</a>
+                </div>
+
+            </div>
+            <div class="con-img">
+                <div>
+                    <img onclick="target('DownloadFile/MemsGameSetup.exe');change(this)" src="img/tux.svg" alt="Image" class="ico" />
+                    <img onclick="target('DownloadFile/MemsGameSetup.exe');change(this)" src="img/windows.svg" alt="Image" class="ico" style="margin-right:1vw;" />
+                </div>
+                <a href="https://www.youtube.com/watch?v=GpVlpaVkmK8" target="_parent" style=" margin-top: auto;margin-left:auto;">
+                    <img src="img/youtube.svg" alt="Image" class="btn-yt" />
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="game-item" style="margin-bottom:10vh;">
+            <img src="img/RacingHead.png" alt="Image" class="img-left" />
+            <div class="con-text">
+
+
+                <a class="text">RackingHead </a>
+
+                <div style="margin-top:auto;margin-bottom:1vw;">
+                    <div onclick="downloadFile('DownloadFile/RackingHead.exe')" class="btn-dowload">Download</div>
+                    <a href="https://spayswolf.itch.io/racking-head" target="_parent" class="btn-forewerd">follow</a>
+                </div>
+
+            </div>
+            <div class="con-img">
+                <div>
+                    <img onclick="target('DownloadFile/RackingHead.exe');change(this)" src="img/tux.svg" alt="Image" class="ico" />
+                    <img onclick="target('DownloadFile/RackingHead.exe');change(this)" src="img/windows.svg" alt="Image" class="ico" style="margin-right:1vw;" />
+                </div>
+                <a href="https://www.youtube.com/watch?v=tQ7HRhGHFLc" target="_parent" style=" margin-top: auto;margin-left:auto;">
+                    <img src="img/youtube.svg" alt="Image" class="btn-yt" />
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let file;
+        function target(fileName)
+        {
+            file = fileName;
+            console.log(file);
+        }
+        
+        function downloadFile(fileDef)
+        {
+            if (file == null)
+            {
+                window.location.href = fileDef;
+            }
+            else
+            {
+                window.location.href = file;
+            }
+
+        }
+
+
+        const buttons = document.querySelectorAll('.ico');
+
+        function change(clickedButton) {
+            buttons.forEach(button => {
+                if (button === clickedButton) {
+                    button.style.filter = "brightness(50%)";;
+                } else {
+                    button.style.filter = "brightness(100%)";;
+                }
+            });
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

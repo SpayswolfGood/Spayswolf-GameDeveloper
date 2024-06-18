@@ -1,0 +1,105 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Spayswolf - game developer</title>
+    <link rel="stylesheet" type="text/css" href="css/PlayGame.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <canvas id="confettiCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('confettiCanvas');
+        const context = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        canvas.addEventListener('click', function (event) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            for (let i = 0; i < 100; i++) {
+                confettiParticles.push(createConfettiParticle(mouseX, mouseY));
+            }
+        });
+
+        function createConfettiParticle(x, y) {
+            const colors = ['#f00', '#0f0', '#00f', '#ff0', '#f0f', '#0ff']; // Цвета для конфетти
+            return {
+                x: x,
+                y: y,
+                size: randomInRange(10, 20),
+                color: colors[Math.floor(Math.random() * colors.length)],
+                angle: randomInRange(0, Math.PI * 2),
+                speed: randomInRange(2, 4),
+                rotation: randomInRange(-0.2, 0.2)
+            };
+        }
+
+        function drawConfettiParticle(particle) {
+            context.save();
+            context.translate(particle.x, particle.y);
+            context.rotate(particle.angle);
+            context.fillStyle = particle.color;
+            context.fillRect(-particle.size / 2, -particle.size / 2, particle.size, particle.size);
+            context.restore();
+        }
+
+        function updateConfettiParticles(particles) {
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].x += Math.cos(particles[i].angle) * particles[i].speed;
+                particles[i].y += Math.sin(particles[i].angle) * particles[i].speed;
+                particles[i].angle += particles[i].rotation;
+
+                if (particles[i].y > canvas.height) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        const confettiParticles = [];
+
+        canvas.addEventListener('click', function (event) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            for (let i = 0; i < 100; i++) {
+                confettiParticles.push(createConfettiParticle());
+            }
+        });
+
+        function animateConfetti() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < confettiParticles.length; i++) {
+                drawConfettiParticle(confettiParticles[i]);
+            }
+
+            updateConfettiParticles(confettiParticles);
+
+            requestAnimationFrame(animateConfetti);
+        }
+
+        animateConfetti();
+    </script>
+</body>
+</html>

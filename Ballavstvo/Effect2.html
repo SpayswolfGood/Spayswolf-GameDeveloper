@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Spayswolf - game developer</title>
+    <link rel="stylesheet" type="text/css" href="css/PlayGame.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <button onclick="reloadPage()">Reload Page</button>
+    <script>
+
+        let drawing = false;
+
+        document.addEventListener('mousedown', startDrawing);
+        document.addEventListener('touchstart', startDrawing);
+
+        document.addEventListener('mousemove', draw);
+        document.addEventListener('touchmove', draw);
+
+        document.addEventListener('mouseup', stopDrawing);
+        document.addEventListener('touchend', stopDrawing);
+
+        function startDrawing(event) {
+            drawing = true;
+            drawImage(event.clientX || event.touches[0].clientX, event.clientY || event.touches[0].clientY);
+        }
+
+        function draw(event) {
+            if (drawing) {
+                drawImage(event.clientX || event.touches[0].clientX, event.clientY || event.touches[0].clientY);
+            }
+        }
+
+        function stopDrawing() {
+            drawing = false;
+        }
+
+        function drawImage(x, y) {
+            const img = new Image();
+            img.src = 'https://randomwordgenerator.com/img/picture-generator/54e7d5414c56a814f1dc8460962e33791c3ad6e04e507441722a72dd954dc5_640.jpg';
+            img.style.position = 'absolute';
+            img.style.width = '100px';
+            img.style.top = (y - 50) + 'px';
+            img.style.left = (x - 50) + 'px';
+            img.style.zIndex = -1;
+            document.body.appendChild(img);
+
+            setTimeout(function () {
+                img.remove();
+            }, 2000);
+        }
+
+        function reloadPage() {
+            location.reload(); // Перезагрузка текущей страницы
+        }
+    </script>
+</body>
+</html>
