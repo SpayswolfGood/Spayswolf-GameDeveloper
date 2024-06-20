@@ -2,11 +2,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Spayswolf - game developer</title>
-    <link rel="stylesheet" type="text/css" href="css/PlayGame.css">
     <style>
         body {
             margin: 0;
             overflow: hidden;
+        }
+
+        button {
+            padding: 1vw 2vw;
+            font-size: 2em;
+            border: none;
+            background-color: #2b2b2b;
+            color: white;
         }
     </style>
 
@@ -14,7 +21,8 @@
 </head>
 
 <body>
-    <button onclick="reloadPage()">Reload Page</button>
+    <button onclick="reloadPage()">New image</button>
+
     <script>
 
         let drawing = false;
@@ -44,8 +52,9 @@
         }
 
         function drawImage(x, y) {
+            const randomNum = Math.floor(Math.random() * 1000);
             const img = new Image();
-            img.src = 'https://randomwordgenerator.com/img/picture-generator/54e7d5414c56a814f1dc8460962e33791c3ad6e04e507441722a72dd954dc5_640.jpg';
+            img.src = ` https://loremflickr.com/320/240`;
             img.style.position = 'absolute';
             img.style.width = '100px';
             img.style.top = (y - 50) + 'px';

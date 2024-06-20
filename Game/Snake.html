@@ -50,12 +50,14 @@
       }
 
       .con-r {
+          white-space: nowrap;
+          margin-right: auto;
+      }
 
-
+      .con-l {
           display:flex;
           flex-direction:column;
-          margin-right: auto;
-          margin-left: auto;
+          margin-left:auto;
       }
 
       .speed-txt {
@@ -74,12 +76,20 @@
           font-size:4vw;
       }
 
-      @media screen and (max-width: 600px) {
-          button {
-              margin: 5px;
-              width: 10vw;
-              height: 10vw;
-              padding: 10px;
+      @media screen and (max-width: 500px) {
+          .rotate {
+              display: flex; 
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: black; 
+              justify-content: center;
+              align-items: center;
+              z-index: 100; 
+              font-size:20vw;
+              color:white;
           }
       }
   </style>
@@ -88,8 +98,8 @@
 <body>
     <div class="game-container">
 
-        <div style="margin-left: auto;">
-            <button class="btn" id="upButton"><img src="arrow.png" alt="↑" style="width: 100%; height: 100%; transform: rotate(-90deg);"/></button>
+        <div class="con-l">
+            <button class="btn" id="upButton"><img src="arrow.png" alt="↑" style="width: 100%; height: 100%; transform: rotate(-90deg);" /></button>
             <button class="btn" id="downButton"><img src="arrow.png" alt="↑" style="width: 100%; height: 100%; transform: rotate(90deg);" /></button>
         </div>
 
@@ -98,8 +108,8 @@
 
         <div class="con-r">
 
-                <button class="btn" id="leftButton"><img src="arrow.png" alt="↑" style="width: 100%; height: 100%; transform: rotate(180deg);" /></button>
-                <button class="btn" id="rightButton"><img src="arrow.png" alt="↑" style="width: 100%; height: 100%; transform: rotate(0deg);" /></button>
+            <button class="btn" id="leftButton"><img src="arrow.png" alt="↑" style="width: 100%; height: 100%; transform: rotate(180deg);" /></button>
+            <button class="btn" id="rightButton"><img src="arrow.png" alt="↑" style="width: 100%; height: 100%; transform: rotate(0deg);" /></button>
         </div>
 
     </div>
@@ -110,6 +120,10 @@
         <button id="Plus" style=" margin-left: auto;">+</button>
         <a id="Speed"></a>
         <button id="Minus" style=" margin-right: auto;">-</button>
+    </div>
+
+    <div class="rotate">
+        Please rotae your phone and restart!
     </div>
     <script src="GameSnake.js"></script>
 </body>
