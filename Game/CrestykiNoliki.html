@@ -53,6 +53,66 @@
                 cursor: pointer;
             }
 
+        .line-through-horizontal {
+            position: relative;
+        }
+
+            .line-through-horizontal::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background-color: white;
+                transform: translateY(-50%);
+            }
+
+        .line-through-vertical {
+            position: relative;
+        }
+
+            .line-through-vertical::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                height: 100%;
+                width: 3px;
+                background-color: white;
+                transform: translateX(-50%);
+            }
+
+        .line-through-diagonal-L {
+            position: relative;
+        }
+
+        .line-through-diagonal-L::before {
+            content: '';
+            position: absolute;
+            top: 27%;
+            left: -75%;
+            height: 145%;
+            width: 145%;
+            border-top: 3px solid white;
+            transform: rotate(45deg);
+
+        }
+
+        .line-through-diagonal-R {
+            position: relative;
+        }
+
+            .line-through-diagonal-R::before {
+                content: '';
+                position: absolute;
+                top: 27%;
+                left: 30%;
+                height: 145%;
+                width: 145%;
+                border-top: 3px solid white;
+                transform: rotate(-45deg);
+            }
     </style>
 
 
@@ -105,6 +165,45 @@
             for (let combination of winningCombinations) {
                 const [a, b, c] = combination;
                 if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+                    if (a === 0 && b === 1 && c === 2) {
+                        cells[a].classList.add('line-through-horizontal');
+                        cells[b].classList.add('line-through-horizontal');
+                        cells[c].classList.add('line-through-horizontal');
+                    } else if (a === 3 && b === 4 && c === 5) {
+                        cells[a].classList.add('line-through-horizontal');
+                        cells[b].classList.add('line-through-horizontal');
+                        cells[c].classList.add('line-through-horizontal');
+                    } else if (a === 6 && b === 7 && c === 8) {
+                        cells[a].classList.add('line-through-horizontal');
+                        cells[b].classList.add('line-through-horizontal');
+                        cells[c].classList.add('line-through-horizontal');
+
+                    }
+
+                    else if (a === 0 && b === 3 && c === 6) {
+                        cells[a].classList.add('line-through-vertical');
+                        cells[b].classList.add('line-through-vertical');
+                        cells[c].classList.add('line-through-vertical');
+                    } else if (a === 1 && b === 4 && c === 7) {
+                        cells[a].classList.add('line-through-vertical');
+                        cells[b].classList.add('line-through-vertical');
+                        cells[c].classList.add('line-through-vertical');
+                    } else if (a === 2 && b === 5 && c === 8) {
+                        cells[a].classList.add('line-through-vertical');
+                        cells[b].classList.add('line-through-vertical');
+                        cells[c].classList.add('line-through-vertical');
+                    }
+
+                    else if (a === 0 && b === 4 && c === 8) {
+                        cells[a].classList.add('line-through-diagonal-L');
+                        cells[b].classList.add('line-through-diagonal-L');
+                        cells[c].classList.add('line-through-diagonal-L');
+                    } else if (a === 2 && b === 4 && c === 6) {
+                        cells[a].classList.add('line-through-diagonal-R');
+                        cells[b].classList.add('line-through-diagonal-R');
+                        cells[c].classList.add('line-through-diagonal-R');
+                    }
+
                     return gameBoard[a];
                 }
             }
@@ -127,9 +226,12 @@
             const winner = checkWinner();
 
             if (winner) {
-                if (winner === 'draw') {
+                if (winner === 'draw')
+                {
                     alert('Ничья!');
-                } else {
+                }
+                else
+                {
                     alert('Игрок ' + currentPlayer + ' победил');
                 }
                 gameEnded = true;
@@ -215,8 +317,11 @@
 
             cells.forEach(cell => {
                 cell.innerText = '';
+                cell.classList.remove('line-through-horizontal', 'line-through-vertical', 'line-through-diagonal-L', 'line-through-diagonal-R');
             });
+
         });
+
     </script>
 </body>
 </html>

@@ -34,7 +34,7 @@
 
                 <div class="circle" style="background-color: #6B6B6B;scale: 5; "></div>
 
-                <div id="container3D"></div>
+                
             </div>
         </div>
     </div>
@@ -47,13 +47,12 @@
         document.addEventListener('touchmove', handleMove);
 
         objects.forEach(object => {
-            object.style.transform = `translate(${0}%, ${0}%)`; // Применяем смещение
+            object.style.transform = `translate(${0}%, ${0}%)`;
         });
 
         function handleMove(event) {
             let mouseX, mouseY;
 
-            // Проверяем, было ли событие вызвано касанием
             if (event.touches) {
                 mouseX = event.touches[0].clientX;
                 mouseY = event.touches[0].clientY;
@@ -63,11 +62,11 @@
             }
 
             objects.forEach(object => {
-                const parallaxSpeedX = object.dataset.parallaxSpeedX || 0.2; // Скорость параллакса по оси X
-                const parallaxSpeedY = object.dataset.parallaxSpeedY || 0.2; // Скорость параллакса по оси Y
+                const parallaxSpeedX = object.dataset.parallaxSpeedX || 0.2;
+                const parallaxSpeedY = object.dataset.parallaxSpeedY || 0.2;
                 const translateX = (mouseX - window.innerWidth / 2) * parallaxSpeedX / 20;
                 const translateY = (mouseY - window.innerHeight / 2) * parallaxSpeedY / 20;
-                object.style.transform = `translate(${translateX}px, ${translateY}px)`; // Применяем смещение
+                object.style.transform = `translate(${translateX}px, ${translateY}px)`;
             });
         }
     </script>
