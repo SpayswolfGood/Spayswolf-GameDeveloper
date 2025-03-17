@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "Monocraft";
+    src: url(font/Monocraft.otf);
+}
+
+body{
+    background-color: black;
+}
+
+h1{
+    color: #ffffff;
+    font-size: 3.8vw;
+    font-family: Monocraft , sans-serif;
+    margin-top: 15vh;
+}
+
+.all{
+    text-align: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.header-text{
+    color: #ffffff;
+    font-size: 1.2vw;
+    font-family: Monocraft , sans-serif;
+    padding:1vw 2vw;
+}
+
+.projects {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    margin-top: 20px;
+}
+
+.project-tile {
+    background-color: #222; 
+    border-radius: 10px; 
+    margin: 15px; 
+    padding: 20px; 
+    text-align: center;
+    width: 10vw; 
+    height: 15vw; 
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.project-tile:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.753); 
+    cursor: pointer;
+}
+
+.project-icon {
+    width: 100%;
+    height: auto; 
+    object-fit: contain; 
+}
+
+.project-title {
+    color: #ffffff; 
+    font-family: Monocraft, sans-serif; 
+    margin-top: 10px; 
+}

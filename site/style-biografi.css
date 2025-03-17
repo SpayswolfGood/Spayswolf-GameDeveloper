@@ -1,0 +1,128 @@
+@font-face {
+    font-family: "Monocraft";
+    src: url(font/Monocraft.otf);
+}
+
+body{
+    background-color: black;
+}
+
+h1{
+    color: #ffffff;
+    font-size: 3.8vw;
+    font-family: Monocraft , sans-serif;
+    margin-top: 15vh;
+    text-align: center;
+}
+
+.all{
+    padding-left: 10vw;
+    padding-right: 10vw;
+    
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+
+
+.header-text{
+    color: #ffffff;
+    font-size: 1.2vw;
+    font-family: Monocraft , sans-serif;
+    padding:1vw 2vw;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.header-text:hover{
+    text-decoration: underline;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column; /* Основной контейнер стал колонкой */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    margin-top: 50px;
+}
+
+.personal-info, .experience, .education,.can {
+    width: 100%;
+    flex: 1 1 300px;
+    background-color: #222;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.biografi-img{
+    width: 30vw;
+    border-radius: 5px;
+    margin: 1vw; /* Отступ справа, если фото слева */
+}
+
+.personal-info{
+    display: flex;
+    align-items: flex-start;  /* Выравниваем текст и фото по верхнему краю */
+    margin-bottom: 20px; /* Добавим отступ от нижних плиток*/
+}
+
+.bottom-tiles{
+  display: flex; /* Создаём flex-контейнер для нижних плиток */
+  justify-content: space-between; /* Распределяем пространство между плитками */
+  width: 100%; /* Занимает всю доступную ширину */
+  
+}
+
+.experience , .education{
+    margin: 10px;
+    padding: 1vw;
+    flex: 1;
+}
+
+.zagolovok{
+    color: #57df2e;
+    font-size: 1.8vw;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: underline;
+    font-family: Monocraft , sans-serif;
+    padding:1vw 0;
+}
+
+.podzagolovok{
+    color: #ffffff;
+    font-size: 1.5vw;
+    font-weight: 400;
+    font-family: Monocraft , sans-serif;
+    padding:0.2vw 0;
+}
+
+.text{
+    color: #ffffff;
+    font-size: 1.5vw;
+    font-family: Monocraft , sans-serif;
+    padding:0.2vw 0;
+}
+
+.experience-item {
+  margin-bottom: 20px;
+}
+
+.btn-down{
+    width: 100%;
+    padding: 2vw 0vw;
+    text-align: center;
+    background-color: #222;
+    color: #ffffff;
+    font-size: 1.5vw;
+    font-family: Monocraft , sans-serif;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn-down:hover{
+    background-color: #57df2e;
+    color: black;
+}
